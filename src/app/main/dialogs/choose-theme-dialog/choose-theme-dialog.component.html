@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Choose theme</h2>
+<mat-dialog-content class="mat-typograhy">
+  <label>
+    <input type="radio" name="theme" checked> Light
+  </label>
+  <br>
+  <label>
+    <input type="radio" name="theme"> Dark
+  </label>
+  <br>
+  <label>
+    <input type="radio" name="theme"> System Default
+  </label>
+  <br>
+  <br>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="cancel">Cancel</button>
+  <button mat-button [mat-dialog-close]="true" class="ok">Ok</button>
+</mat-dialog-actions>

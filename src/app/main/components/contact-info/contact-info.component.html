@@ -1,0 +1,48 @@
+<mat-toolbar >
+  <mat-icon class="ic" (click)="close()">close</mat-icon>
+  <span class="header-title">Contact info</span>
+</mat-toolbar>
+<div class="wrapper">
+  <div class="picture-name-section">
+    <div class="picture-div">
+      <img class="profile-picture" src="../../../../assets/no_chat_selected_img.jpg">
+    </div>
+    <span class="display-name">Lehlogonolo Makgae</span>
+  </div>
+  <div class="media-section">
+    <div class="row">
+      <span>Media, Links and Docs</span>
+      <mat-icon class="ic">navigate_next</mat-icon>
+    </div>
+    <p class="no-media">No Media, Links and Docs</p>
+  </div>
+  <div class="notifications-section">
+    <h5 class="title">Mute notifications</h5>
+    <input type="checkbox" disabled>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="starred-section">
+    <h5 class="title">Starred Messages</h5>
+    <mat-icon class="ic">navigate_next</mat-icon>
+  </div>
+  <div class="about-section">
+    <mat-divider></mat-divider>
+  </div>
+  <div class="number-section">
+    <h5 class="title">+27 63 424 5727</h5>
+  </div>
+  <div class="block-section section-btn">
+    <mat-icon class="btn-ic ic">block</mat-icon>
+    <h5 class="title-m">Block</h5>
+  </div>
+  <div class="report-section section-btn">
+    <mat-icon class="btn-ic red">thumb_down</mat-icon>
+    <h5 class="title-m red">Report contact</h5>
+  </div>
+  <div class="delete-section section-btn">
+    <mat-icon class="btn-ic red">delete</mat-icon>
+    <h5 class="title-m red">Delete chat</h5>
+  </div>
+  <div class="end-section"></div>
+</div>
+

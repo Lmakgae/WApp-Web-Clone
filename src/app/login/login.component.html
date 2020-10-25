@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="container">
+    <div class="header-bg">
+    </div>
+    <div class="header-wrapper">
+      <img class="logo" src="../../assets/logo.svg" >
+      <div class="title">WhatsApp Web Clone</div>
+    </div>
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col col-md-6">
+          <div class="text-content">
+            <h2>To use WApp Clone on your computer:</h2>
+            <br>
+            <p>1. Open WApp Clone on your phone</p>
+            <p>2. Tap Menu <mat-icon [inline]="true">more_vert</mat-icon> and select WApp Clone Web</p>
+            <p>3. Point your phone to this screen to capture the code</p>
+            <p style="text-align: center;">or</p>
+            <p>Sign in anonymously to test the app, communicating with the WApp Clone Bot</p>
+          </div>
+        </div>
+        <div class="col col-md-4 text-center">
+          <div class="center">
+            <qrcode  [qrdata]="documentId" [width]="312" [errorCorrectionLevel]="'M'"></qrcode>
+          </div>
+          <div class="center">
+            <label >
+              <input type="checkbox" name="rememberMe" checked [formControl]="rememberMe">
+              Keep me signed in
+            </label>
+          </div>
+          <p style="margin-top: 10px;">or</p>
+          <button class="btn" mat-flat-button color="primary" (click)="onSignInAnonymously()">Sign in anonymously</button>
+        </div>
+      </div>
+    </div>
+    <div class="end"></div>
+  </div>
+</div>
+

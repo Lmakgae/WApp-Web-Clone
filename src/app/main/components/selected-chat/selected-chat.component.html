@@ -1,0 +1,54 @@
+<div class="chat-header">
+  <mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item matTooltip="Lehlogonolo Makgae"
+                    [matTooltipPosition]="'below'"
+                    (click)="openContactInfo()">
+        <img matListAvatar src="../../assets/no_chat_selected_img.jpg">
+        <span matLine style="font-size: 16px; color: #000;">Lehlogonolo Makgae</span>
+      </mat-list-item>
+    </mat-nav-list>
+    <span class="toolbar-spacer"></span>
+    <button mat-icon-button
+            matTooltip="Search..."
+            [matTooltipPosition]="'below'">
+      <mat-icon class="ic">search</mat-icon>
+    </button>
+    <button mat-icon-button
+            matTooltip="Menu"
+            [matTooltipPosition]="'below'"
+            [matMenuTriggerFor]="menu">
+      <mat-icon class="ic">more_vert</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-menu #menu="matMenu" xPosition="before">
+    <button mat-menu-item (click)="openContactInfo()">Contact info</button>
+    <button mat-menu-item>Select messages</button>
+    <button mat-menu-item>Mute notifications</button>
+    <button mat-menu-item>Clear messages</button>
+    <button mat-menu-item>Delete chat</button>
+  </mat-menu>
+
+</div>
+
+<div class="chat-content">
+  <div class="chat-bg"></div>
+</div>
+
+<div class="bottom-container">
+  <button mat-icon-button class="emoji-btn">
+    <mat-icon class="ic ic-size-28">insert_emoticon</mat-icon>
+  </button>
+  <button mat-icon-button class="attach-btn"
+          matTooltip="Attach"
+          [matTooltipPosition]="'above'">
+    <mat-icon class="ic ic-size-28">attach_file</mat-icon>
+  </button>
+  <div class="text-container">
+
+  </div>
+  <button mat-icon-button class="mic-btn">
+    <mat-icon class="ic ic-size-28">mic</mat-icon>
+  </button>
+</div>

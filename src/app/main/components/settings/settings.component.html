@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <div class="header">
+    <mat-icon class="ic" (click)="close()">arrow_back</mat-icon>
+    <span class="title">Settings</span>
+  </div>
+  <div class="profile-details" (click)="openProfile()">
+    <img class="picture" src="../../../../assets/no_chat_selected_img.jpg">
+    <span class="display-name">Lehlogonolo Makgae</span>
+  </div>
+
+  <div class="btn-section" (click)="openNotifications()">
+    <h5 class="title">Notifications</h5>
+    <mat-icon class="ic">notifications</mat-icon>
+  </div>
+
+  <div class="btn-section" (click)="openChooseThemeDialog()">
+    <div class="divider"></div>
+    <h5 class="title">Theme</h5>
+    <mat-icon class="ic">brightness_6</mat-icon>
+  </div>
+
+  <div class="btn-section" (click)="openChatWallpaper()">
+    <div class="divider"></div>
+    <h5 class="title">Chat Wallpaper</h5>
+    <mat-icon class="ic">wallpaper</mat-icon>
+  </div>
+
+  <div class="btn-section" (click)="openBlockedCon()">
+    <div class="divider"></div>
+    <h5 class="title">Blocked</h5>
+    <mat-icon class="ic">block</mat-icon>
+  </div>
+
+  <div class="btn-section" (click)="openHelpCon()">
+    <div class="divider"></div>
+    <h5 class="title">Help</h5>
+    <mat-icon class="ic">help</mat-icon>
+  </div>
+</div>
+

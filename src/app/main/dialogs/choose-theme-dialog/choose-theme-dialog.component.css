@@ -1,0 +1,26 @@
+.ok {
+  background-color: #05cd51;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  transition: box-shadow .18s ease-out,background .18s ease-out,color .18s ease-out;
+}
+
+.cancel {
+  background-color: white;
+  color: #05cd51;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  transition: box-shadow .18s ease-out,background .18s ease-out,color .18s ease-out;
+}
+
+label {
+  color: #4a4a4a;
+}
+
+h2 {
+  font-size: 20px;
+  color: #4a4a4a;
+}

@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col col-2 min-w-80">
+      <img matListAvatar class="displayPicture" src="../../assets/no_chat_selected_img.jpg" >
+    </div>
+
+    <div class="col col-8 min-w-340">
+      <div class="row h-50">
+        <span class="chat-nameDisplay">
+              Lehlogonolo Makgae</span>
+      </div>
+      <div class="row h-50 d">
+        <mat-icon class="ic m-t-2" *ngIf="false">done</mat-icon>
+        <mat-icon class="ic m-t-2" *ngIf="true">done_all</mat-icon>
+        <span class="chat-textDisplay m-t-2"
+              matTooltip="This is the text message display"
+              [matTooltipPosition]="'below'">
+              This is the text message display</span>
+
+      </div>
+      <mat-divider *ngIf="true"></mat-divider>
+    </div>
+
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item>Archive chat</button>
+      <button mat-menu-item>Mute notifications</button>
+      <button mat-menu-item>Delete chat</button>
+      <button mat-menu-item>Pin chat</button>
+      <button mat-menu-item>Mark as unread</button>
+    </mat-menu>
+
+  </div>
+</div>

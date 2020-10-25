@@ -1,0 +1,152 @@
+<div class="green-bg"></div>
+<div class="main">
+  <div class="row">
+    <!-- Chat List Side -->
+    <div [ngClass]="contactInfoToggle ? 'col col-25' : 'col col-30'">
+      <!-- Chat List Header -->
+      <mat-toolbar class="left-header">
+        <mat-nav-list>
+          <mat-list-item (click)="toggleProfileCon()">
+            <img matListAvatar src="../../assets/no_chat_selected_img.jpg">
+          </mat-list-item>
+        </mat-nav-list>
+        <span class="toolbar-spacer"></span>
+        <button mat-icon-button
+                matTooltip="Status"
+                [matTooltipPosition]="'below'">
+          <mat-icon class="ic">radio_button_unchecked</mat-icon>
+        </button>
+        <button mat-icon-button
+                matTooltip="New chat"
+                [matTooltipPosition]="'below'">
+          <mat-icon class="ic">chat</mat-icon>
+        </button>
+        <button mat-icon-button
+                matTooltip="Menu"
+                [matTooltipPosition]="'below'"
+                [matMenuTriggerFor]="menu">
+          <mat-icon class="ic">more_vert</mat-icon>
+        </button>
+      </mat-toolbar>
+      <mat-toolbar class="not-connected-container" *ngIf="true">
+        <img class="ic" src="../../assets/phone_not_connected.svg">
+        <div class="text">
+          <h6 class="title">Phone not connected</h6>
+          <div class="subtitle">Make sure your phone has an active Internet connection.</div>
+          <p class="subtitle" style="cursor: pointer;">Learn more <mat-icon style="font-size: 12px;">arrow_forward_ios</mat-icon></p>
+        </div>
+      </mat-toolbar>
+      <!-- Chat List Search Bar -->
+      <mat-toolbar class="search-toolbar">
+        <div [ngClass]="searchFocus ? 'search-input-focused' : 'search-input-unfocused'">
+          <input #searchInput type="text" [formControl]="searchFormControl" (blur)="searchOnBlur()" (focus)="searchOnFocus()">
+          <mat-icon  class="ic ic-back" *ngIf="searchFocus">arrow_back</mat-icon>
+          <mat-icon class="ic ic-search" *ngIf="!searchFocus">search</mat-icon>
+          <mat-icon class="ic ic-clear" *ngIf="searchInput.value" (click)="clearSearch()">clear</mat-icon>
+          <span *ngIf="!searchFocus">Search or start new chat</span>
+        </div>
+      </mat-toolbar>
+
+      <!-- Chat List -->
+      <div class="chat-list">
+        <!-- <app-chat-list-item *ngIf="user.isAnonymous" (click)="select()"></app-chat-list-item> -->
+
+        <cdk-virtual-scroll-viewport itemSize="50" class="chat-list-viewport" *ngIf="true">
+          <div *cdkVirtualFor="let item of items">
+            <app-chat-list-item (click)="select()" ></app-chat-list-item>
+          </div>
+        </cdk-virtual-scroll-viewport>
+
+      </div>
+
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item>New group</button>
+        <button mat-menu-item>Create a room</button>
+        <button mat-menu-item (click)="toggleProfileCon()">Profile</button>
+        <button mat-menu-item>Archived</button>
+        <button mat-menu-item>Starred</button>
+        <button mat-menu-item (click)="toggleSettings()">Settings</button>
+        <button mat-menu-item (click)="logout()">Log out</button>
+      </mat-menu>
+
+      <!-- Settings -->
+      <div [ngClass]="settingsToggle ? 'settings-con settings-active ' : 'settings-con'">
+        <app-settings [ngClass]="settingsToggle ? 'settings-con settings-active ' : 'settings-con'"
+                      *ngIf="settingsToggle"
+                      (closeSettingsEvent)="toggleSettings()"
+                      (openNotificationsEvent)="toggleNotifications()"
+                      (openChatWallpaperEvent)="toggleChatWallpaper()"
+                      (openBlockedConEvent)="toggleBlockedCon()"
+                      (openHelpConEvent)="toggleHelpCon()"
+                      (openProfileEvent)="toggleProfileCon()"></app-settings>
+
+      </div>
+
+      <!-- Settings/Profile -->
+      <div [ngClass]="profileClasses">
+        <app-profile [ngClass]="profileClasses"
+                  *ngIf="profileConToggle"
+                  (closeProfileEvent)="toggleProfileCon()"></app-profile>
+      </div>
+
+      <!-- Settings/Notifications -->
+      <div [ngClass]="notificationsToggle ? 'notifications-con notifications-active ' : 'notifications-con'">
+        <app-notifications [ngClass]="notificationsToggle ? 'notifications-con notifications-active ' : 'notifications-con'"
+                            *ngIf="notificationsToggle"
+                            (closeNotificationsEvent)="toggleNotifications()"></app-notifications>
+      </div>
+
+      <!-- Settings/Set Chat Wallpaper -->
+      <div [ngClass]="chatWallpaperToggle ? 'chatWallpaper-con chatWallpaper-active ' : 'chatWallpaper-con'">
+        <app-chat-wallpaper [ngClass]="chatWallpaperToggle ? 'chatWallpaper-con chatWallpaper-active ' : 'chatWallpaper-con'"
+                            *ngIf="chatWallpaperToggle"
+                            (closeChatWallpaperEvent)="toggleChatWallpaper()"></app-chat-wallpaper>
+      </div>
+
+      <!-- Settings/Blocked -->
+      <div [ngClass]="blockedConToggle ? 'blocked-con blocked-active ' : 'blocked-con'">
+        <app-blocked [ngClass]="blockedConToggle ? 'blocked-con blocked-active ' : 'blocked-con'"
+                      *ngIf="blockedConToggle"
+                      (closeBlockedEvent)="toggleBlockedCon()"></app-blocked>
+      </div>
+
+      <!-- Settings/Help -->
+      <div [ngClass]="helpConToggle ? 'help-con help-active ' : 'help-con'">
+        <app-help [ngClass]="helpConToggle ? 'help-con help-active ' : 'help-con'"
+                  *ngIf="helpConToggle"
+                  (closeHelpEvent)="toggleHelpCon()"></app-help>
+      </div>
+
+
+    </div>
+
+
+    <!-- Messages Side -->
+    <div  [ngClass]="contactInfoToggle ? 'col col-45' : 'col col-70'">
+      <div class="wrapper">
+
+        <div class="selected-chat" *ngIf="selectedChat">
+          <app-selected-chat (openContactInfoEvent)="toggleContactInfo()"></app-selected-chat>
+        </div>
+
+
+        <!-- No chat selected template -->
+        <div class="no-chat-selected" *ngIf="!selectedChat">
+          <img src="../../assets/no_chat_selected_img.jpg" width="200px" height="200px">
+          <h3>Keep your phone connected</h3>
+          <h5>WApp Clone connects to your phone to sync messages. To reducde data usage, connect your phone to Wi-Fi.</h5>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="col col-30 contact-info" *ngIf="contactInfoToggle">
+      <app-contact-info (closeContactInfoEvent)="toggleContactInfo()"></app-contact-info>
+    </div>
+
+
+
+  </div>
+</div>

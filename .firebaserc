@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "wapp-clone-d9f26": {
+      "hosting": {
+        "wapp-clone": [
+          "wapp-clone-web"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "wapp-clone": "wapp-clone-d9f26"
+  }
+}
